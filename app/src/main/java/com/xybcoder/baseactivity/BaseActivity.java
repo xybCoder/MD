@@ -1,4 +1,6 @@
 package com.xybcoder.baseactivity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,6 +32,13 @@ public abstract class BaseActivity extends AppCompatActivity{
      * 初始化
      */
     protected void initView(){}
+
+    /**
+     * 跳转activity
+     */
+    protected  void goToActivity(Context context,Class<?>cls){
+       startActivity(new Intent(context,cls));
+    }
 
     @Override
     protected void onDestroy() {

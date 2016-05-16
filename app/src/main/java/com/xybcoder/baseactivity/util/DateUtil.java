@@ -1,25 +1,66 @@
 package com.xybcoder.baseactivity.util;
+
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
+
 /**
- *
  * Created by dell on 2016/5/14.
  */
 public class DateUtil {
 
-    public static String toDate(Date date) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-        return dateFormat.format(date);
+    public static Date strToDate(String s, String format) {
+        // yyyy-MM-dd HH:mm
+        Date d = new Date();
+        DateFormat dateFormat = new SimpleDateFormat(format);
+        try {
+            d = dateFormat.parse(s);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return d;
     }
 
 
-    public static String toDate(Date date, int add) {
+    public static String dateToStr1(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        return dateFormat.format(date);
+    }
+
+    public static String dateToStr2(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        String str = dateFormat.format(date);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        return str;
+    }
+
+    public static String dateToStr3(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm");
+        String str = dateFormat.format(date);
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+        return str;
+    }
+
+    public static String datetoStr4(Date date, int add) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.add(Calendar.DATE, add);
-        return toDate(calendar.getTime());
+        return dateToStr1(calendar.getTime());
+    }
+
+
+    /**
+     * 获取当前时间
+     *
+     * @return
+     */
+    public static String getNowDateString() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return dateFormat.format(new Date());
     }
 
 

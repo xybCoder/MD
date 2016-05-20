@@ -12,6 +12,13 @@ import java.util.TimeZone;
  */
 public class DateUtil {
 
+    /**
+     *
+     * @param s
+     * @param format
+     * @return
+     *
+     */
     public static Date strToDate(String s, String format) {
         // yyyy-MM-dd HH:mm
         Date d = new Date();
@@ -24,13 +31,22 @@ public class DateUtil {
         return d;
     }
 
-
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static String dateToStr1(Date date) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
         return dateFormat.format(date);
     }
 
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static String dateToStr2(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         String str = dateFormat.format(date);
@@ -38,6 +54,11 @@ public class DateUtil {
         return str;
     }
 
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static String dateToStr3(Date date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm");
         String str = dateFormat.format(date);
@@ -45,6 +66,12 @@ public class DateUtil {
         return str;
     }
 
+    /**
+     *
+     * @param date
+     * @param add
+     * @return
+     */
     public static String datetoStr4(Date date, int add) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -63,7 +90,11 @@ public class DateUtil {
         return dateFormat.format(new Date());
     }
 
-
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static Date getLastdayDate(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -71,7 +102,11 @@ public class DateUtil {
         return calendar.getTime();
     }
 
-
+    /**
+     *
+     * @param date
+     * @return
+     */
     public static Date getNextdayDate(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -79,7 +114,12 @@ public class DateUtil {
         return calendar.getTime();
     }
 
-
+    /**
+     *
+     * @param one
+     * @param another
+     * @return
+     */
     public static boolean isTheSameDay(Date one, Date another) {
         Calendar _one = Calendar.getInstance();
         _one.setTime(one);

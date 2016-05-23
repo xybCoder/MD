@@ -1,4 +1,4 @@
-package com.xybcoder.baseactivity.util;
+package com.library.common.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;

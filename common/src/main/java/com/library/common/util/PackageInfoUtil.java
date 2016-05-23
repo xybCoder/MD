@@ -1,4 +1,4 @@
-package com.xybcoder.baseactivity.util;
+package com.library.common.util;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;

@@ -1,13 +1,11 @@
 package com.library.common.photo;
-
-
-import org.android.share.utils.IntentUtil;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+
+import com.library.common.util.IntentUtil;
 
 import java.io.File;
 
@@ -103,6 +101,6 @@ public class GetSimplePhotoActivity extends Activity {
     }
 
     public void finishAndReturnBitmap(Uri uri) {
-        org.android.share.utils.photo.GetSimplePhotoHelper.getInstance(this).getSelectedPhoto(uri);
+        GetSimplePhotoHelper.getInstance(this).getSelectedPhoto(uri);
     }
 }

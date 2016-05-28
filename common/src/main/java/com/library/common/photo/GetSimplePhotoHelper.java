@@ -1,8 +1,4 @@
 package com.library.common.photo;
-
-
-import org.android.share.utils.BitmapUtil;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -10,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
+
+import com.library.common.util.BitmapUtil;
 
 import java.io.File;
 
@@ -109,7 +107,7 @@ public class GetSimplePhotoHelper {
         if (bitmap != null) {
             bitmap = BitmapUtil.rotateBitmap(bitmap, GetPhotoUtil.getPhotoDegreeByUri(uri));
         }
-        org.android.share.utils.photo.SimplePhoto photo = new SimplePhoto();
+        SimplePhoto photo = new SimplePhoto();
         photo.bitmap = bitmap;
         photo.uri = uri;
         photo.degree = GetPhotoUtil.getPhotoDegreeByUri(uri);
@@ -131,7 +129,7 @@ public class GetSimplePhotoHelper {
      */
     public interface OnSelectedPhotoListener {
 
-        public void onSelectedPhoto(int way, org.android.share.utils.photo.SimplePhoto photo);
+        public void onSelectedPhoto(int way,SimplePhoto photo);
 
     }
 

@@ -6,12 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.security.auth.Subject;
+
 /**
  * 快速开发的activity基础框架类，提供了getView来简化findViewById,并且提供了构建框架.
  * @author Jack Tony<br>
  * @date 2015/4/25
  */
 public abstract class QuickBaseActivity extends Activity {
+    Observer observer;
+    Observable observable;
+    Subject subject;
 
     protected String TAG = getClass().getSimpleName();
 

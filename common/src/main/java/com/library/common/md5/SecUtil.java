@@ -1,24 +1,56 @@
-package com.library.common.util;
+package com.library.common.md5;
 
 import android.util.Base64;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Created by dell on 2016/5/20.
+ * @author:Neptune
+ * @Description:DateUtil 提供一些常用的时间想法的方法
  */
-public class DigestUtil {
+public class SecUtil {
 
-    /**
-     * Used to build output as Hex
-     */
     private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd',
             'e', 'f'                         };
 
-    private DigestUtil() {
-        throw new AssertionError();
+    public static MessageDigest MD5 = null;
+
+    static {
+        try {
+            MD5 = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException ne) {
+            ne.printStackTrace();
+        }
     }
+
+    public static String FileMD5(File file) {
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(file);
+            byte[] buffer = new byte[8192];
+            int length;
+            while ((length = fileInputStream.read(buffer)) != -1) {
+                MD5.update(buffer, 0, length);
+            }
+            return new BigInteger(1, MD5.digest()).toString(16);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            try {
+                if (fileInputStream != null)
+                    fileInputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     /**
      * encode By MD5

@@ -1,4 +1,5 @@
-package com.xybcoder.baseactivity;
+package com.xybcoder.baseactivity.base;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,16 +11,18 @@ import butterknife.ButterKnife;
 /**
  * Created by dell on 2016/5/2.
  */
-public abstract class BaseActivity extends AppCompatActivity{
+public abstract class BaseActivity extends AppCompatActivity {
     protected String TAG = this.getClass().getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         ButterKnife.bind(this);
         //log当前操作的activity
-        Log.i("====CurrentActivity====",TAG);
+        Log.i("====CurrentActivity====", TAG);
         initView();
+        initData();
     }
 
     /**
@@ -28,23 +31,42 @@ public abstract class BaseActivity extends AppCompatActivity{
      * @return
      */
     protected abstract int getLayoutResId();
+
     /**
-     * 初始化
+     * 初始化UI
      */
-    protected void initView(){}
+    protected abstract void initView();
+
+    /**
+     * 初始化数据
+     */
+    private void initData() {
+
+    }
+
 
     /**
      * 跳转activity
      */
-    protected  void goToActivity(Context context,Class<?>cls){
-       startActivity(new Intent(context,cls));
+    protected void goToActivity(Context context, Class<?> cls, Bundle bundle) {
+        Intent intent = new Intent(context, cls);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
+
+
+    protected void goToActivityForResult(Context context,Class<?> cls, Bundle bundle,int requestCode){
+        Intent intent = new Intent(context, cls);
+        intent.putExtras(bundle);
+        startActivityForResult(intent,requestCode);
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
-        Log.i(TAG,"onDestroy");
+        Log.i(TAG, "onDestroy");
 
     }
 }

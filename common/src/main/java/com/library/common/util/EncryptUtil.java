@@ -1,5 +1,7 @@
 package com.library.common.util;
 
+import com.library.common.md5.SecUtil;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
@@ -74,7 +76,7 @@ public class EncryptUtil {
     public static String getPublicKey(KeyPair keyPair) {
         String ret = null;
         byte[] publicKey = keyPair.getPublic().getEncoded();
-        ret = DigestUtil.Base64Encode(publicKey);
+        ret = SecUtil.Base64Encode(publicKey);
         return ret;
     }
 
@@ -87,7 +89,7 @@ public class EncryptUtil {
     public static String getPrivateKey(KeyPair keyPair) {
         String ret = null;
         byte[] privateKey = keyPair.getPrivate().getEncoded();
-        ret = DigestUtil.Base64Encode(privateKey);
+        ret = SecUtil.Base64Encode(privateKey);
         return ret;
     }
 
@@ -142,7 +144,7 @@ public class EncryptUtil {
             mode = KEY_MODE_PUBLIC;
         }
         if (data != null && data.length > 0 && key != null && key.length() > 0) {
-            byte[] keyData = DigestUtil.Base64Decode(key);//获取key对象的字节数组
+            byte[] keyData = SecUtil.Base64Decode(key);//获取key对象的字节数组
             byte[] encryptBytes = null;
             switch (mode) {
                 case KEY_MODE_PRIVATE:
@@ -156,7 +158,7 @@ public class EncryptUtil {
                     break;
             }
             //将加密后的数据编码
-            ret = DigestUtil.Base64Encode(encryptBytes);
+            ret = SecUtil.Base64Encode(encryptBytes);
         }
         return ret;
     }
@@ -179,7 +181,7 @@ public class EncryptUtil {
             mode = KEY_MODE_PRIVATE;
         }
         if (data != null && data.length > 0 && key != null && key.length() > 0) {
-            byte[] keyData = DigestUtil.Base64Decode(key);//获取key对象的字节数组
+            byte[] keyData = SecUtil.Base64Decode(key);//获取key对象的字节数组
             switch (mode) {
                 case KEY_MODE_PRIVATE:
                     //使用私钥解密

@@ -1,9 +1,9 @@
 package com.library.common.entity;
 
 import com.library.common.constant.HttpConstants;
+import com.library.common.string.StringUtil;
+import com.library.common.time.TimeUtil;
 import com.library.common.util.HttpUtil;
-import com.library.common.util.StringUtil;
-import com.library.common.util.TimeUtil;
 
 import java.util.HashMap;
 import java.util.Map;

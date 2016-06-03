@@ -2,6 +2,8 @@ package com.library.common.util;
 
 import android.content.Context;
 
+import com.library.common.string.StringUtil;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

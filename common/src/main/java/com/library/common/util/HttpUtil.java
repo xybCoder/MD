@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import com.library.common.constant.HttpConstants;
 import com.library.common.entity.HttpRequest;
 import com.library.common.entity.HttpResponse;
+import com.library.common.string.StringUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
